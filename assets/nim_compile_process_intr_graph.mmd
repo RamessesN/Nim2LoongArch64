@@ -1,0 +1,36 @@
+ 
+graph TD
+subgraph 编译
+    CBackend( C 编译器 )
+    CppBackend( C++ 编译器 )
+    ObjCBackend( objC 编译器 )
+    Compile{编译}
+    Exe[可执行二进制]
+    Lib[共享库/静态库]
+
+    NimSource[ Nim 源代码 ] --> CompileToC[ 编译到 C ] & CompileToCpp[ 编译到 C++ ] & CompileToObjC[ 编译到 Object-C ]
+    NimSource --> CompileToJS[ 编译到 JavaScript ]
+    CompileToJS -->  JSBackend{JavaScript 运行时 }  --> node(NodeJS) & browser(浏览器)
+
+    CompileToC -->   CBackend
+    CompileToCpp --> CppBackend
+    CompileToObjC -->ObjCBackend
+
+    CBackend &  CppBackend & ObjCBackend  --> Compile
+
+    Compile --> Exe & Lib
+end
+
+subgraph OS
+
+    Exe & Lib --o Win & MacOS & Linux & BSD-like & more[...]
+    
+    Lib --o JVM & iOS
+
+    MacOS ~~~ iOS
+
+    JVM --o Android
+
+end
+
+
