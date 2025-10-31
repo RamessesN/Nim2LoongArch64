@@ -1,0 +1,6 @@
+[submodule "project-docs/src/Nim"]
+	path = project-docs/src/Nim
+	url = https://github.com/nim-lang/Nim
+[submodule "project-docs/src/pylib"]
+	path = project-docs/src/pylib
+	url = https://github.com/nimpylib/nimpylib
