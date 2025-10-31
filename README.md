@@ -1,7 +1,7 @@
 ![ouc-logo](assets/ouc.png)
 
 <div align="center">
-    <h2> 基于开源操作系统开发应用程序-nim移植LoongArch </h2>
+    <h1> 基于开源操作系统开发应用程序-nim移植LoongArch </h1>
 </div>
 
 <div align="left">
@@ -52,7 +52,9 @@ Nim 内核提供了一系列的特性，包括：
 <br>
 龙芯架构采用基础部分 (Loongson Base) 加扩展部分的组织形式 (如图 1:1 所示)。其中扩展部分包括：二进制翻译扩展 (Loongson Binary Translation，简称 LBT)、虚拟化扩展 (Loongson Virtualization，简称 LVZ)、向量扩展 (Loongson SIMD Extension，简称 LSX) 和高级向量扩展 (Loongson Advanced SIMDExtension，简称 LASX)。
 
-![loongarch](assets/loongarch.png)
+<div align="center">
+    <img alt="loongarch_img" title="loongarch_img" width=400 src="./assets/loongarch.png">
+</div>
 
 - 龙芯架构的基础部分包含非特权指令集和特权指令集两个部分，其中非特权指令集部分定义了常用的整数和浮点数指令，能够充分支持现有各主流编译系统生成高效的目标代码。
 - 龙芯架构的虚拟化扩展部分用于为操作系统虚拟化提供硬件加速以提升性能。这部分涉及的基本上都是特权资源，包括一些特权指令和控制状态寄存器、以及在例外和中断、存储管理等方面添加新的功能。
