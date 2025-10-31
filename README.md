@@ -1,21 +1,18 @@
 ![ouc-logo](assets/ouc.png)
 
-ASSERT: ouc loongson ouc100
+<div align="center">
+    <h2> 基于开源操作系统开发应用程序-nim移植LoongArch </h2>
+</div>
 
-# 基于开源操作系统开发应用程序-nim移植LoongArch
-
-队名：nimble \
-成员：蔺春名、李佳潼、赵禹惟 \
-指导教师：曲海鹏 \
-学校：中国海洋大学
-所属方向：OS系统工具开发
-
-[TOC]
-
+<div align="left">
+    队名：nimble <br>
+    成员：蔺春名、赵禹惟、李佳潼 <br>
+    指导教师：曲海鹏 <br>
+    学校：中国海洋大学 <br>
+    所属方向：OS系统工具开发
+</div>
 
 ## 1. 项目简介
-
-
 在现有的 Nim 移植基础上，进一步 LoongArch 架构的移植，处理了等，实现 LoongArch 架构支持。搭建 LoongArch 编译环境，编译目标系统，并在LoongArch架构实机完成功能调试，并进行测试。形成[移植文档](./project-docs/移植文档.pdf)及[测试文档](./project-docs/测试文档.md)。
 
 [功能演示视频](./project-docs/功能演示.mp4)请见：
@@ -23,15 +20,11 @@ ASSERT: ouc loongson ouc100
 官方的迁移提示： <https://nim-lang.org/docs/intern.html#porting-to-new-platforms>
 
 ## 1.1. 项目难点与意义
-
 ### 1.1.1. 项目难点
-
 - Nim 相关教程，尤其是中文教程极少
 - Nim 编译器为自举实现的，修改Nim编译器源码需要同时了解C和Nim
 
-
 ### 1.1.2. 项目意义
-
 实现Nim到LoongArch(龙芯)的迁移：
 - 完善国产龙芯CPU生态
 - 为软件国产化提供更优方案进行探索
@@ -42,9 +35,7 @@ ASSERT: ouc loongson ouc100
 
 
 ## 2. 题目分析和相关资料调研
-
 ### 2.1 Nim 语言
-
 Nim语言作为静态类型的编译型系统级语言，因其简洁优雅而富含现代化特性的语法而拥有可超越Python的开发效率，语法简约而灵活，与此同时，却拥有接近C的运行效率，充分发挥了零成本（zero-overhand）的特色。它整合了Pascal，Python，Ada，Modula等众多语言的优秀特性，也给许多现代化语言的设计带来灵感，如Rust、Cangjie(仓颉)。
 Nim代码在可以作为NimScript解释执行的同时，以编译执行作为主要运行方式，且在相当程度上做到了一套代码，多后段执行，即可编译为C、C++、JavaScript代码，拥有极高的跨语言性、语言互操作性和灵活的FFI，极大提高了开发的便携度。
 不同于C的手动内存管理，也不同于C++/Rust的RAII，Nim使用ORC作为内存管理，即ARC+小型循环检测器，保证了内存安全的同时，也通过sink参数、copy on write等技术极大程度避免了对性能的影响。同时，也拜托了Rust风格的强制所有权检查带来的各种不便，极大提高了开发效率与开发负担。
@@ -57,9 +48,8 @@ Nim 内核提供了一系列的特性，包括：
 - 健全的标准库与丰富的第三方库
 
 ### 2.2 Loongarch 指令集
-
 龙芯架构 LoongArch 具有 RISC 指令架构的典型特征，其指令长度固定且编码格式规整，绝大多数指令只有两个源操作数和一个目的操作数，采用 load/store 架构，即仅有 load/store 访存指令可以访问内存，其它指令的操作对象均是处理器核内部的寄存器或指令码中的立即数。
-
+<br>
 龙芯架构采用基础部分 (Loongson Base) 加扩展部分的组织形式 (如图 1:1 所示)。其中扩展部分包括：二进制翻译扩展 (Loongson Binary Translation，简称 LBT)、虚拟化扩展 (Loongson Virtualization，简称 LVZ)、向量扩展 (Loongson SIMD Extension，简称 LSX) 和高级向量扩展 (Loongson Advanced SIMDExtension，简称 LASX)。
 
 ![loongarch](assets/loongarch.png)
@@ -70,16 +60,13 @@ Nim 内核提供了一系列的特性，包括：
 - 龙芯向量指令扩展和高级向量指令扩展两部分均是采用 SD 指令来加速计算密集型应用。两个扩展部分在指令功能上基本一致，区别在于向量指令扩展操作的向量位宽是 128 位而高级向量指令扩展操作的向量位宽是 256 位。
 
 ### 2.3 龙芯 3A5000 处理器
-
 龙芯 3A5000/3B5000 是面向个人计算机、服务器等信息化领域的通用处理器，基于龙芯自主指令系统（LoongArch）的 LA464 微结构，并进一步提升频率，降低功耗，优化性能。
 
 ## 3. 项目文件说明
+TODO: ...
 
-TODO:
-
-
-```shell
-.
+<pre>
+<code>.
 ├── LICENSE*                     
 ├── README.md*                   
 ├── src/                         # 迁移相关文件和代码的目录
@@ -102,16 +89,11 @@ TODO:
 │   ├── top/                     # 内核顶层代码的目录
 │   └── vm/                      # 虚拟机相关代码的目录
 ├── project-docs                 # 存放相关文档
-└── assets/                      # 图片相关文件
-
-
-```
+└── assets/                      # 图片相关文件</code>
+</pre>
 
 ## 4. 搭建开发环境
-
 ### 4.0 在已受支持的平台编译Nim
-
-
 ref: <https://nim-lang.org/install_unix.html>
 
 ```shell
@@ -122,13 +104,12 @@ sh build.sh  # 这一步会使用https协议clone github上的csources， 如果
 bin/nim c koch
 ./koch boot -d:release
 ./koch tools
-
+```
 
 ### 4.1 准备工作
-
 我们此次选择以loongson用户的HOME目录为工作目录
 
-即 `~loongson` 
+即 `~loongson`
 
 好处是即使登陆为root用户也能正常执行
 
@@ -138,10 +119,9 @@ bin/nim c koch
 
 ---
 
-
 上文提到:
 
-  Nim编译器 由 Nim语言实现
+Nim编译器 由 Nim语言实现
 
 想要编译Nim编译器，就需要现有一个Nim编译器。
 
@@ -161,11 +141,10 @@ Nim官方维护了大量平台的C source，版本号跟进Nim主版本号，为
 
 
 ### 4.2 下载 C 编译器
-
 如果系统尚无CC (C Compiler)， 则安装一个：
 
 > 由于所使用的LoongArch64架构上安装的系统为UOS，所以包管理器同Debian, Ubuntu
-
+> 
 ```shell
 sudo apt update  # 更新索引
 sudo apt install gcc  # 安装 CC
@@ -173,101 +152,81 @@ sudo apt install gcc  # 安装 CC
 
 另，视情况可以再安装git （如果需要使用Nim的版管理器nimble、或使用git来clone本仓库）
 
-
 > 其他系统使用其他的包管理器， 如使用ArchLinux(支持LoongArch64), 则命令为 `sudo pacman -S gcc git`
 
 
 ### 4.3 下载 C source & 源码
-
 ```shell
-# 如许获取最新编译器源码: 
-# git clone git@github.com/nim-lang/Nim
-# 如需最新csources代码：
-# git clone git@github.com:nim-lang/csources_v2 Nim/csources_v2
+ 如许获取最新编译器源码: 
+ git clone git@github.com/nim-lang/Nim
+ 如需最新csources代码：
+ git clone git@github.com:nim-lang/csources_v2 Nim/csources_v2
 ```
-
 这些仓库已经作为submodule置于本项目的子文件夹下（使用文件夹路径设置url而非上述链接）
-
 
 ```shell
 git clone https://gitlab.eduxiji.net/T202410423994345/project2608128-274097.git ~loongson/
 ```
 
 ### 4.4  编译
-
 首先使用csources编译得到第一版Nim
-
-详情见[build nim from csource.md](./project-docs/steps/build_nim_from_csource.md)
-
+<br>
+详情见 [build nim from csource.md](./project-docs/steps/build_nim_from_csource.md)
+<br>
 使用 koch 进行编译。Nim使用koch负责编译自身编译器及相关工具:
-
 
 详情见 [build with csource nim](./project-docs/steps/build_with_csource_nim.md)
 
 ### 4.5 安装
-
 编译成功的nim以及各种工具位于bin下，要将他们移动至系统bin目录下：
 
 见 [makeup to system](./project-docs/steps/makeup_to_system.md)
 
 
 ### 4.6 Nim REPL(交互执行环境)
-
 执行以下命令即可启动 Nim 的 REPL：
-
 ```shell
 nim secret
 ```
-
 > 因为目前REPL模块目前(截至nim v2.2.0)尚未完善，故没有被公开出来。
 我们在阅读源码是发现了这个功能，认为很有用，并且实际可以在相当程度上正常使用，所以在此用于展示
 
 ## 5. 移植过程
-
 ### 5.1 Nim编译过程探讨
-
 要想移植Nim编译器，首先我们需要搞懂Nim编译器是如何编译Nim语言源代码的：
-
 ![nim compile process intr graph](assets/nim_compile_process_intr_graph.png)
-
-下面我们将简单介绍一下。
+下面我们将简单介绍一下:
 
 #### 5.1.1 从 Nim 代码编译到后端代码
-
 正如C代码的-c(compile-only)选项编译到汇编，是由于C代码的目标语言为asm，有时称asm为C的后端
-
+<br>
 Nim则支持编译到多种后端，C、C++、ObjC、JS
-
+<br>
 作为这种特性优越性的一个例子，一些Nim开发的游戏可以既可以编译为主机游戏，还能不加改动地编译为网页游戏。
 
 #### 5.1.2 Nim VM & 解释执行
-
 除了上述的能编译到后端外(通常称为编译执行)，Nim还支持解释执行。
 能解释执行的Nim代码通常被称作NimScript，是Nim语言的一个子集。
-
+<br>
 我们知道，Python代码由Python解释器解释执行，也称由Python虚拟机(VM)执行。
-
+<br>
 同理，Nim的这种能解释执行的特性，由Nim编译器内置的小型VM实现。
-
+<br>
 同时，Nim编译器通过内置的VM支持 `编译期求值`，
-
+<br>
 比C++11的constexpr 和 Rust 的 `const fn` 等更加灵活。
-
 
 ![内核启动流程](assets/kernel-init.png)
 
 在 boot-shim 跳转到内核之后，先进行内核启动的准备工作，比如保存启动参数和内核物理地址，同时初步初始化页表，并映射到地址空间，以便内核进入 C 环境。在 C 语言环境之后，利用 C 语言的高级特性和丰富的库函数简化开发和维护，进一步完成内核启动后期的工作，包括打开内存管理单元、线程初始化、虚拟内存初始化、内核初始化以及平台初始化等，同时启动初始用户空间进程。
 
 ### 5.2 现有移植的整理和推进
-
 #### 5.2.1 编译准备
-
 - [x] GitHub开源仓库 <https://github.com/nim-lang/Nim>
 - [x] 在install.ini增添支持 <https://github.com/nim-lang/Nim/pull/23672>
 - [x] 为Nim的符号常量hostCPU增添可能的项"loongarch64" <https://github.com/nim-lang/Nim/pull/19233>
 
 #### 5.2.2 第三方库适配
-
 - [x] 测试并为第三方库 jester 添加 LA 支持
 - [x] 测试并为第三方库 zip 添加 LA 支持
 - [x] 测试并为第三方库 nimpylib 添加 LA 支持
@@ -280,7 +239,6 @@ Nim则支持编译到多种后端，C、C++、ObjC、JS
 另外，为了
 
 ##### nimble packages.json 配置
-
 而 nim使用 nimble 为包管理器，
 
 默认的包安装目录为 `~/.nimble`。
@@ -295,16 +253,11 @@ cp packages/packages.json ~/.nimble/
 ```
 
 ##### 安装第三方包
-
-
-
 在第三方库和 system/ulib 中，有许多库涉及到架构相关的代码，这部分在需要我们在移植内核之前先补充完成。主要涉及到架构相关的第三方库有`musl`和`libunwind`，这些库我们都进行了 backport，添加了对 Loongarch 的支持。
 
 此外还有`system/ulib`下一些用户态函数会使用到的系统库（如`inspector`，`libzbi`等），也做了移植和完善。
 
 ###### zip
-
-
 直接运行，报错：
 
 ```plain
@@ -312,7 +265,6 @@ could not load: libzip(|2).so(|.4|.2|.1|.0)
 ```
 
 说明没有共享库
-
 
 安装(还以apt为例)：
 
@@ -322,17 +274,15 @@ sudo apt install libzip-dev
 
 之后即正常运行
 
-![nim-zip演示](nimble_zip.png)
+![nim-zip演示](assets/nimble_zip.png)
 
 
 ## 6. 项目成果
-
 移植总代码量改动约 10000 行，实现了内核启动、内核核心功能（如虚拟内存管理、线程管理、异常处理等）以及围绕内核调用衍生出的其他应用功能。
 
 ![image-20240531233752757](assets/commits.png)
 
 ### 6.1 内核系统调用
-
 - 外围设备地址映射和管理功能
 - 自旋锁获取和解锁
 - 线程创建和销毁
@@ -346,7 +296,6 @@ sudo apt install libzip-dev
   - 虚拟内存映射相关功能，地址空间初始化
 
 ### 6.2 基于上述功能实现的其他内核功能
-
 - Mutex（互斥锁）的功能，用于线程同步和互斥访问共享资源。
 - 信号量（Semaphore）的功能，用于线程之间的同步和资源管理。
 - 内核定时器子系统，用于管理系统中的定时器和定时任务。
@@ -357,11 +306,9 @@ sudo apt install libzip-dev
 - 基于链表的内存缓冲区管理器（MBufChain），用于管理大小可变的内存缓冲区。
 
 ### 6.3 应用演示
-
 ## <center>Nim 展示文档<center>
 
 #### （一）Nim 模块编译测试
-
 *在 build_nim/Nim 下进行编译测试*
 
 ```bash
@@ -370,7 +317,6 @@ sudo apt install libzip-dev
 
 
 #### （二）Nim 基本命令信息
-
 - 查看帮助文档
 
 ```powershell
@@ -384,7 +330,6 @@ nim --version
 ```
 
 #### （三）Nim 交互式执行命令
-
 - 直接执行表达式或命令
 
 ```powershell
@@ -408,9 +353,7 @@ nim --hints:off secret
 >>> sqrt 9.1
 ```
 
-
 #### （四）Nim 基本命令行操作
-
 *编写 testArgs.nim 文件内容如下*
 
 ```nim
@@ -452,17 +395,14 @@ nim doc --hints:off testArgs.nim
 ```
 
 ## 7. 测试
-
 Nim编译器的测试使用了自带的`testament`工具，普通测试主要是对内核的功能进行测试，单元测试主要是对内核的各个模块进行测试。详细测试过程见[测试文档](https://gitlab.eduxiji.net/T202410423994345/project2608128-274097/-/tree/main/project-docs/steps/test.md)。
 
 其中，在已移植的功能中，大部分都能通过单元测试。其中有部分尚未能通过的测试样例的功能争取在决赛中完成移植
 
 ## 8. 演示
-
-![./assets/nimble队-演示.mp4](./assets/nimble队-演示.mp4)
+![./assets/nimble队-演示.mp4](./assets/nimble队-演示.gif)
 
 ## 9. 下一步工作
-
 - [ ] 将已有迁移工作整理并向[Nim仓库](https://github.com/nim-lang/Nim)和[csources\_v2](https://github.com/nim-lang/csources_v2)提交PR
 - [ ] 完成Ubuntu, Debian等Linux发行版提交Nim的LoongArch64的包的发行
 - [ ] 升级编译工具链
@@ -471,7 +411,6 @@ Nim编译器的测试使用了自带的`testament`工具，普通测试主要是
 - [ ] 探究测试时发现的valigrind对LoongArch的不完善支持的问题
 
 ## 10. 比赛收获
-
 经历这次比赛，我们收获颇丰。我们11月份决定参加这个赛道，当时我们对于LoongArch64架构移植还是一窍不通的，纯粹是由于发现在手头的LoongArch架构Linux下无法直接使用包管理器安装Nim，对此决定为开源社区与国产CPU架构发展贡献薄力，所以前期花了不少时间组织队伍成员一起整理Nim编译器源代码和研究 Loongarch 特性。最后经过长时间的准备之后开始了代码的编写，从获得第一个能在LoongArch下运行的Nim编译器开始，一步步修复测试问题，逐渐深入理解LoongArch架构以及Nim编译器的设计，最后完成了这次编译器的移植。
 
 另外，移植一开始是仿照已有的 mips64 架构相关的代码，而后面我们就开始自己理解并编写适用于 Loongarch 的代码，这大大提升了我们 Loongarch 的理解，以及对 Nim 编译器从启动到功能实现的全流程的理解。在调试错误时，因为繁杂的函数调用及与C函数的混合，导致错误定位和追根溯源花费了大量的时间，但是这个过程也给我们带来了很大的启发，学到很多。
@@ -479,13 +418,11 @@ Nim编译器的测试使用了自带的`testament`工具，普通测试主要是
 最后，我们的工作离不开我们的指导老师曲海鹏老师，是老师的支持让我们有机会站在这里，让我们有机会与来自全国各个高校的优秀队伍一拼高下。同样也感谢大赛各组织机构及专委会，我们将牢记此次竞赛积累的经验，继续秉持对计算机系统的热情，虚极静笃、沉淀自我，在未来为这一领域做出更有价值的成绩。
 
 ## 11. 开源声明
-
 本[项目文档](https://gitlab.eduxiji.net/T202410423994345/project2608128-274097/-/tree/main/project-docs)均采用 [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/) 许可协议。
 
 本项目(以及submodule)相关commit均采用[MIT开源协议](http://opensource.org/licenses/MIT)
 
 ## 12. 参考
-
 - Nim 官方文档： [Nim Docs](https://nim-lang.org/docs/)
 - Nim 源码： [Nim (nim-lang)](https://github.com/nim-lang/Nim)
 - Nim Docs of [Porting to New Platforms](https://nim-lang.org/docs/intern.html#porting-to-new-platforms)
